@@ -28,6 +28,9 @@ class ViewController: UIViewController {
         self.stopuButton.layer.cornerRadius = self.timeLabel.bounds.width / 6
         self.resetButton.layer.cornerRadius = self.timeLabel.bounds.width / 6
 
+        // startボタンだけを可能
+        setButtonEnabled(start: true, stop: false, reset: false)
+        
     }
 
     override func didReceiveMemoryWarning() {
@@ -35,6 +38,18 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+
+    /// button's enable controll
+    ///
+    /// - Parameters:
+    ///   - start: startButton.isEnabled's BOOL Value
+    ///   - stop:  stopuButton.isEnabled's BOOL Value
+    ///   - reset: resetButton.isEnabled's BOOL Value
+    func setButtonEnabled(start:Bool, stop: Bool, reset: Bool) {
+        self.startButton.isEnabled = start
+        self.stopuButton.isEnabled = stop
+        self.resetButton.isEnabled = reset
+    }
     
     /// time manage
     func update() {
@@ -50,6 +65,7 @@ class ViewController: UIViewController {
     ///
     /// - Parameter sender: timer start
     @IBAction func startTimer(_ sender: Any) {
+        setButtonEnabled(start: false, stop: true, reset: false)
         self.startTime = NSDate.timeIntervalSinceReferenceDate
         self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
     }
@@ -58,11 +74,16 @@ class ViewController: UIViewController {
     ///
     /// - Parameter sender: timer stop
     @IBAction func stopTimer(_ sender: Any) {
+        setButtonEnabled(start: true, stop: false, reset: true)
         self.timer?.invalidate()
         self.timer = nil
     }
     
+    /// resetTimer
+    ///
+    /// - Parameter sender: timer reset
     @IBAction func resetTimer(_ sender: Any) {
+        setButtonEnabled(start: true, stop: false, reset: false)
         self.startTime = nil
         self.timeLabel.text = "00:00:00"
     }
