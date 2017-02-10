@@ -1,14 +1,21 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11134" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12100" systemVersion="16C68" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11106"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12072"/>
+        <capability name="Alignment constraints to the first baseline" minToolsVersion="6.0"/>
+        <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Stopwatch_iOS" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -16,8 +23,84 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KXt-1z-ESd">
+                                <rect key="frame" x="10" y="30" width="355" height="447"/>
+                                <color key="backgroundColor" red="0.53059333562850952" green="0.68516647815704346" blue="0.29333749413490295" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="beq-eb-YCU">
+                                <rect key="frame" x="10" y="557" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.12426241487264633" green="0.26878646016120911" blue="0.47145944833755493" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="iVy-ZP-AAT"/>
+                                    <constraint firstAttribute="width" constant="100" id="u26-5R-ccW"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Start">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="startTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="vCq-7f-EqL"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jTL-me-kCM">
+                                <rect key="frame" x="265" y="557" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.26095062494277954" green="0.58027356863021851" blue="0.60619151592254639" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="P50-Un-uaN"/>
+                                    <constraint firstAttribute="width" constant="100" id="oBv-GM-QQc"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Reset">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="resetTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JQc-FU-yMF"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VaG-lE-lcu">
+                                <rect key="frame" x="137" y="557" width="100" height="100"/>
+                                <color key="backgroundColor" red="0.11118850857019424" green="0.38673299551010132" blue="0.63727927207946777" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="XnO-2d-BqX"/>
+                                    <constraint firstAttribute="width" constant="100" id="gcJ-Qn-T0x"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Stop">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="stopTimer:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cQp-9g-RSr"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.27025473117828369" green="0.53714805841445923" blue="0.23851817846298218" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="KXt-1z-ESd" firstAttribute="leading" secondItem="beq-eb-YCU" secondAttribute="leading" id="9mL-dL-XnL"/>
+                            <constraint firstItem="KXt-1z-ESd" firstAttribute="trailing" secondItem="jTL-me-kCM" secondAttribute="trailing" id="BrN-Se-RRk"/>
+                            <constraint firstItem="VaG-lE-lcu" firstAttribute="baseline" secondItem="jTL-me-kCM" secondAttribute="baseline" id="CGN-uN-OSW"/>
+                            <constraint firstItem="beq-eb-YCU" firstAttribute="top" secondItem="VaG-lE-lcu" secondAttribute="top" id="HVX-u4-Sn8"/>
+                            <constraint firstItem="KXt-1z-ESd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Sae-gk-cYh"/>
+                            <constraint firstItem="KXt-1z-ESd" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="bud-Nq-Iaj"/>
+                            <constraint firstItem="beq-eb-YCU" firstAttribute="baseline" secondItem="VaG-lE-lcu" secondAttribute="firstBaseline" id="cSf-BE-T60"/>
+                            <constraint firstItem="VaG-lE-lcu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="j8t-h6-W3h"/>
+                            <constraint firstItem="VaG-lE-lcu" firstAttribute="baseline" secondItem="jTL-me-kCM" secondAttribute="firstBaseline" id="qyt-9T-KGW"/>
+                            <constraint firstItem="beq-eb-YCU" firstAttribute="top" secondItem="KXt-1z-ESd" secondAttribute="bottom" constant="80" id="r8B-rb-Gog"/>
+                            <constraint firstItem="KXt-1z-ESd" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="-6" id="sP4-Yj-bWl"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="beq-eb-YCU" secondAttribute="bottom" constant="10" id="tzk-BW-VDu"/>
+                            <constraint firstItem="VaG-lE-lcu" firstAttribute="baseline" secondItem="beq-eb-YCU" secondAttribute="firstBaseline" id="wYO-D8-DFx"/>
+                            <constraint firstItem="VaG-lE-lcu" firstAttribute="top" secondItem="jTL-me-kCM" secondAttribute="top" id="z8K-9a-95c"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="resetButton" destination="jTL-me-kCM" id="BfQ-Om-XI2"/>
+                        <outlet property="startButton" destination="beq-eb-YCU" id="5Gk-cX-pSF"/>
+                        <outlet property="stopuButton" destination="VaG-lE-lcu" id="Sb5-Pc-fTi"/>
+                        <outlet property="timeLabel" destination="KXt-1z-ESd" id="aVb-XH-sSM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
