@@ -15,6 +15,9 @@ class ViewController: UIViewController {
     @IBOutlet weak var stopuButton: UIButton!
     @IBOutlet weak var resetButton: UIButton!
     
+    var startTime: TimeInterval? = nil
+    var timer: Timer?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -25,7 +28,13 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
+    func update() {
+    
+    }
+    
     @IBAction func startTimer(_ sender: Any) {
+        self.startTime = NSDate.timeIntervalSinceReferenceDate
+        self.timer = Timer.scheduledTimer(timeInterval: 0.01, target: self, selector: #selector(ViewController.update), userInfo: nil, repeats: true)
     }
 
     @IBAction func stopTimer(_ sender: Any) {
